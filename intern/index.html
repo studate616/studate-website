@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src https://gwkmoucgsroqdtgqccvy.supabase.co data:; connect-src 'self' https://gwkmoucgsroqdtgqccvy.supabase.co; base-uri 'none'; form-action 'none'">
+<meta name="theme-color" content="#1C0617">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="STUDATE intern">
+<title>STUDATE intern</title>
+<style>
+  :root{
+    --paper:#FFFFFF; --card:#FFFFFF; --ink:#1C0617; --ink-soft:#6E5D6B; --ink-mute:#9A8896; --line:#EFE3EC;
+    --pink:#F0B1DE; --pink-soft:#F9E3F1; --marker:#FFDE59; --lime-soft:#EFFBD2;
+    --bar:#C4477F; --bar-soft:#F3D3E4; --grid:#F1E8EE;
+    --band:#1C0617; --band-text:#F7ECF4; --alarm:#B3261E; --alarm-soft:#FCE8E6; --ok:#2E7D32;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+    --paper:#140410; --card:#1C0917; --ink:#F7ECF4; --ink-soft:#BFA9B9; --ink-mute:#8C7688; --line:#2C1524;
+    --pink-soft:#301226; --lime-soft:#222B14; --bar:#E0569A; --bar-soft:#3A1830; --grid:#261220;
+    --band:#0D020A; --band-text:#F7ECF4; --alarm:#F2B8B5; --alarm-soft:#3B1413; --ok:#8BD08F;
+    color-scheme:dark;
+  }}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased;
+    padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 18px 56px}
+  header{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;padding-top:14px;padding-bottom:12px}
+  header .wordmark{margin-right:auto}
+  @media (max-width:560px){header .stand{order:3;width:100%}.knopf{padding:6px 11px}}
+  .wordmark{font-size:20px;font-weight:800;letter-spacing:-.4px}
+  .wordmark em{font-style:normal;background:var(--pink);color:#1C0617;padding:0 4px;border-radius:5px}
+  .wordmark small{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-left:8px}
+  .kopf-rechts{display:flex;align-items:center;gap:8px}
+  .stand{font-size:12px;color:var(--ink-soft);white-space:nowrap}
+  button{font:inherit;cursor:pointer}
+  .knopf{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;min-height:36px}
+  .knopf:hover{border-color:var(--ink-soft)}
+  .knopf-voll{background:var(--band);color:var(--band-text);border-color:var(--band);padding:12px 22px;font-size:16px;font-weight:700;min-height:48px}
+  button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+  h2{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:34px 0 12px}
+  .karte{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+  .raster{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  @media (max-width:760px){.raster{grid-template-columns:repeat(2,1fr)}}
+  .kachel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px;min-width:0}
+  .kachel .wert{font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums}
+  .kachel .titel{font-size:13px;font-weight:600;color:var(--ink-soft);margin-top:2px}
+  .kachel .zusatz{font-size:12px;color:var(--ink-mute);margin-top:4px}
+  .kachel.hervor{background:var(--pink-soft);border-color:transparent}
+  .kachel.alarm{background:var(--alarm-soft);border-color:transparent}
+  .kachel.alarm .wert{color:var(--alarm)}
+  .zeile2{display:grid;grid-template-columns:1.5fr 1fr;gap:10px}
+  @media (max-width:760px){.zeile2{grid-template-columns:1fr}}
+  .chart-kopf{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px}
+  .chart-kopf strong{font-size:15px}
+  .chart-kopf span{font-size:12px;color:var(--ink-soft)}
+  .chart{position:relative}
+  .chart svg{display:block;width:100%;height:auto;overflow:visible}
+  .chart .tip{position:absolute;pointer-events:none;background:var(--band);color:var(--band-text);font-size:12px;
+    padding:6px 9px;border-radius:8px;white-space:nowrap;transform:translate(-50%,-110%);opacity:0;transition:opacity .12s}
+  .chart .tip.an{opacity:1}
+  details{margin-top:10px}
+  summary{font-size:12px;color:var(--ink-soft);cursor:pointer}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;font-variant-numeric:tabular-nums}
+  th,td{text-align:left;padding:5px 4px;border-bottom:1px solid var(--line)}
+  th{font-weight:600;color:var(--ink-soft)}
+  td.zahl,th.zahl{text-align:right}
+  .balkenliste{display:flex;flex-direction:column;gap:10px}
+  .balken-zeile .oben{display:flex;justify-content:space-between;gap:8px;font-size:14px}
+  .balken-zeile .oben span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .balken-zeile .oben span:last-child{font-weight:700;font-variant-numeric:tabular-nums}
+  .balken-zeile .spur{height:8px;background:var(--grid);border-radius:4px;margin-top:4px;overflow:hidden}
+  .balken-zeile .fuell{height:100%;background:var(--bar);border-radius:4px}
+  .aufteilung{display:flex;gap:18px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:14px}
+  .aufteilung b{font-variant-numeric:tabular-nums}
+  .profile{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media (max-width:760px){.profile{grid-template-columns:1fr}}
+  .profil{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px 12px;min-width:0}
+  .profil img,.profil .platzhalter{width:56px;height:56px;border-radius:14px;object-fit:cover;flex:none;background:var(--pink-soft)}
+  .profil .platzhalter{display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;color:var(--ink-soft)}
+  .profil .text{min-width:0;flex:1}
+  .profil .name{font-weight:700;font-size:15px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .profil .meta{font-size:13px;color:var(--ink-soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .profil .zeit{font-size:12px;color:var(--ink-mute)}
+  .marke{font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;background:var(--lime-soft);color:var(--ink)}
+  .marke.pause{background:var(--marker);color:#1C0617}
+  .marke.neu{background:var(--pink);color:#1C0617}
+  .leer{color:var(--ink-soft);font-size:14px;padding:6px 0}
+  .liste-klein{display:flex;flex-direction:column;gap:6px;font-size:14px}
+  .liste-klein div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:6px 0}
+  .liste-klein code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--ink-soft)}
+  .hinweis{font-size:13px;color:var(--ink-soft);margin-top:30px;padding-top:16px;border-top:1px solid var(--line)}
+  .anmelden{max-width:420px;margin:12vh auto 0;padding:0 18px}
+  .anmelden h1{font-size:30px;letter-spacing:-.03em;margin:0 0 8px}
+  .anmelden p{color:var(--ink-soft);margin:0 0 20px}
+  .anmelden input{width:100%;font:inherit;font-size:16px;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);margin-bottom:12px}
+  .fehler{color:var(--alarm);font-size:14px;min-height:21px;margin:0 0 8px}
+  .laedt{opacity:.55;transition:opacity .2s}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+  <section id="anmelden" class="anmelden" hidden>
+    <h1>Gründer-Zugang</h1>
+    <p>Nur für Kendim, Tayga und Berke. Der Schlüssel wird ausschließlich auf diesem Gerät gespeichert.</p>
+    <form id="anmelde-form" autocomplete="off">
+      <label for="schluessel" class="stand">Persönlicher Schlüssel</label>
+      <input id="schluessel" type="password" inputmode="text" autocapitalize="off" spellcheck="false" required>
+      <p id="anmelde-fehler" class="fehler" role="alert"></p>
+      <button class="knopf knopf-voll" type="submit">Dashboard öffnen</button>
+    </form>
+  </section>
+
+  <div id="app" hidden>
+    <header>
+      <div class="wrap">
+        <div class="wordmark">stu<em>date</em><small>intern</small></div>
+        <span id="stand" class="stand" aria-live="polite"></span>
+        <div class="kopf-rechts">
+          <button id="neu-laden" class="knopf" type="button">Aktualisieren</button>
+          <button id="abmelden" class="knopf" type="button">Abmelden</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap" id="inhalt">
+      <p id="fehler" class="fehler" role="alert"></p>
+
+      <h2>Wachstum</h2>
+      <div class="raster" id="kacheln-wachstum"></div>
+
+      <h2>Aktivität</h2>
+      <div class="raster" id="kacheln-aktivitaet"></div>
+
+      <h2>Verlauf und Verteilung</h2>
+      <div class="zeile2">
+        <div class="karte">
+          <div class="chart-kopf"><strong>Neue Konten pro Tag</strong><span>letzte 30 Tage</span></div>
+          <div class="chart" id="verlauf"></div>
+          <details>
+            <summary>Als Tabelle anzeigen</summary>
+            <table><thead><tr><th>Tag</th><th class="zahl">Konten</th><th class="zahl">Fertige Profile</th></tr></thead><tbody id="verlauf-tabelle"></tbody></table>
+          </details>
+        </div>
+        <div class="karte">
+          <div class="chart-kopf"><strong>Hochschulen</strong><span>fertige Profile</span></div>
+          <div class="balkenliste" id="hochschulen"></div>
+          <div class="aufteilung" id="geschlecht"></div>
+        </div>
+      </div>
+
+      <h2>Neueste Profile</h2>
+      <div class="profile" id="profile"></div>
+
+      <h2>Onboarding angefangen, noch kein Profil</h2>
+      <div class="karte"><div class="liste-klein" id="onboardings"></div></div>
+
+      <p class="hinweis">Umsätze und Abos siehst du in der App „RevenueCat Mobile" mit deinem eigenen RevenueCat-Zugang. Diese Seite aktualisiert sich jede Minute von selbst, solange sie geöffnet ist.</p>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
