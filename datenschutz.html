@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Datenschutzerklärung — STUDATE</title>
-<meta name="description" content="STUDATE — die Connect- und Meet-App für Studierende. Nur echte Studis, geprüft per Studiennachweis.">
+<title>Datenschutzerklärung · STUDATE</title>
+<meta name="description" content="STUDATE, die Connect- und Meet-App für Studierende. Nur echte Studis, geprüft per Studiennachweis.">
 <style>
   :root{
     --paper:#FFFFFF; --ink:#1C0617; --ink-soft:#6E5D6B; --line:#EFE3EC;
@@ -61,6 +61,9 @@
   .doc .updated{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);
     color:var(--ink-soft);font-size:14px}
   .doc .note{color:var(--ink-soft);font-size:14.5px}
+  .doc .hinweis{background:var(--pink-soft);border-radius:16px;padding:18px 20px;margin:0 0 14px}
+  .doc .hinweis p{margin:0 0 8px}
+  .doc .hinweis p:last-child{margin:0}
 
   /* ---- Handy-Feinschliff (<=560px) ----
      Getestet auf 375x812 (iPhone). Ziel: nichts klebt am Rand, Schrift
@@ -81,6 +84,7 @@
     .doc h2{font-size:17.5px;margin:28px 0 7px}
     .doc p,.doc li{font-size:16px;line-height:1.68}
     .doc .addr{padding:15px 16px;border-radius:13px}
+    .doc .hinweis{padding:15px 16px;border-radius:13px}
     .doc ul{padding-left:19px}
   }
 </style>
@@ -104,23 +108,44 @@
       <a href="mailto:support@studate.eu">support@studate.eu</a></div>
     <h2>1. Welche Daten wir verarbeiten</h2>
     <ul>
-      <li>Account-Daten: Anmeldung über „Mit Apple anmelden“ (Apple-Kennung und E-Mail-Adresse) — ein Passwort speichern wir nicht</li>
-      <li>Profil-Daten: Name, Hochschule, Studiengang, Semester, Abschluss, Interessen, Bio, Avatar-Auswahl</li>
+      <li>Account-Daten: Anmeldung über „Mit Apple anmelden“ (Apple-Kennung und E-Mail-Adresse), ein Passwort speichern wir nicht</li>
+      <li>Profil-Daten: Name, Alter, Geschlecht, Hochschule, Studiengang, Semester, Abschluss, Interessen, wofür du offen bist, Lernorte, Verfügbarkeit, Bio, Profilfotos</li>
+      <li>Deck-Einstellungen: wen du im Deck sehen möchtest und, mit studate∞, welchen Hochschul-Standort du gewählt hast</li>
+      <li>Verifizierung (freiwillig): Foto oder PDF deines Studiennachweises (Studentenausweis oder Immatrikulationsbescheinigung) und die daraus automatisch gelesenen Angaben (Name, Hochschule, Gültigkeitsdatum). In deinem Profil speichern wir das Ergebnis und das Gültigkeitsdatum. Passt die Hochschule auf dem Nachweis nicht zu deiner Profilangabe, übernehmen wir die Hochschule vom Nachweis. Den Nachweis selbst bewahren wir in einem geschützten Speicher auf, auf den andere Nutzer keinen Zugriff haben, bis du deinen Account löschst</li>
+      <li>Mitteilungen: Push-Token deines Geräts und deine Mitteilungs-Einstellungen, solange du Mitteilungen erlaubst</li>
       <li>Inhalte: Beiträge, Nachrichten, Meetups, die du erstellst</li>
-      <li>Nutzungsdaten: Pings, Matches, Meldungen, Blockierungen</li>
-      <li>Standort: nur wenn du die Karte zentrierst — dein Standort wird nicht gespeichert oder geteilt</li>
+      <li>Nutzungsdaten: Pings (auch ob ein Ping mit Textmarker hervorgehoben war), Matches, Meldungen, Blockierungen</li>
+      <li>Letzte Aktivität: wann du zuletzt in der App warst, für den Online-Status</li>
+      <li>Pausieren: ob dein Profil pausiert ist und seit wann</li>
+      <li>Abo und Käufe: ob du studate+ oder studate∞ hast und welche Käufe du getätigt hast, verknüpft mit deiner Konto-ID. An deinen Beiträgen speichern wir, welches Abo du beim Posten hattest. Dein Textmarker-Guthaben wird auf deinem Gerät gespeichert</li>
+      <li>Nutzungsanalyse der Profilerstellung: welche Schritte der Profilerstellung du erreichst, abschließt oder verlässt. Dazu speichern wir den Schrittnamen, die Art des Ereignisses (zum Beispiel Schritt geöffnet, Hinweis angezeigt, App in den Hintergrund gewechselt), einen kurzen technischen Code (zum Beispiel für eine fehlende Angabe oder einen Fehler), das Ergebnis der automatischen Fotoprüfung (angenommen oder abgelehnt, bei Ablehnung mit dem Grund, etwa: verstößt gegen die Richtlinien, keine Person erkennbar, Gesicht nicht erkennbar, passt nicht zu den Profilangaben), App-Version und Build-Nummer, den Zeitpunkt, eine zufällige Kennung des Durchlaufs und deine Konto-ID. Deine Eingaben selbst (Name, Fotos, Bio, Suchbegriffe) speichern wir dabei nicht</li>
+      <li>Standort: nur wenn du die Karte zentrierst. Dein Standort wird nicht gespeichert oder geteilt</li>
     </ul>
     <h2>2. Wofür wir die Daten nutzen</h2>
     <p>Zur Bereitstellung der App-Funktionen (Profile anzeigen, Matches vermitteln, Meetups anzeigen), zur Moderation gemeldeter Inhalte und zur Missbrauchsprävention. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) sowie lit. f (berechtigtes Interesse an einer sicheren Plattform).</p>
-    <h2>3. Wo die Daten liegen</h2>
-    <p>Unsere Server werden von Supabase (Region Frankfurt, EU) in der EU betrieben. Es findet kein Verkauf von Daten an Dritte statt. Keine Werbe-Tracker.</p>
+    <p>Automatische Prüfung von Fotos: Jedes Foto, das du hinzufügst, prüft ein KI-Dienst (Anthropic, siehe Abschnitt 3) automatisch auf unzulässige Inhalte wie Nacktheit, Gewalt, Waffen oder Drogen. Beim Profilfoto prüft er zusätzlich, ob eine echte Person mit klar erkennbarem Gesicht zu sehen ist und, wenn du weiblich oder männlich angegeben hast, ob das Foto dieser Angabe deutlich widerspricht. Dafür übermitteln wir das Foto und deine Angabe zum Geschlecht. Lehnt die Prüfung ein Foto ab, kannst du es nicht verwenden und wählst ein anderes. Hältst du eine Ablehnung für falsch, schreib uns an <a href="mailto:support@studate.eu">support@studate.eu</a>. Die Prüfung schützt die Community vor Fake-Profilen und unzulässigen Inhalten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b und lit. f DSGVO.</p>
+    <p>Automatische Prüfung des Studiennachweises: Wenn du dich verifizierst, liest ein KI-Dienst (Anthropic, siehe Abschnitt 3) Name, Hochschule und Gültigkeitsdatum aus deinem Nachweis. Den Studi-Haken bekommst du nur, wenn ein gültiger Nachweis einer deutschen Hochschule erkennbar ist. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.</p>
+    <p>Nutzungsanalyse der Profilerstellung: Wir werten aus, an welchen Schritten der Profilerstellung Nutzer hängen bleiben oder aufhören, um diese Schritte verständlicher zu machen und Fehler zu beheben. Aus demselben Grund speichern wir beim Pausieren den Zeitpunkt, damit wir erkennen, ob Profile versehentlich pausiert werden. Die Einträge sind pseudonym: Sie enthalten deine Konto-ID, aber weder deinen Namen noch deine Eingaben. Wir setzen dafür keine Drittanbieter-Tools ein und geben die Daten nicht weiter. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse ist eine verständliche, funktionierende Profilerstellung und eine einfache Bedienung der App.</p>
+    <h2>3. Wo die Daten liegen und wer sie für uns verarbeitet</h2>
+    <p>Deine Daten speichern wir auf Servern in der EU: Supabase (Supabase, Inc.) betreibt unsere Datenbank und den Speicher für Fotos und Nachweise in der Region Frankfurt. Für einzelne Funktionen setzen wir außerdem diese Empfänger ein:</p>
+    <ul>
+      <li>Anthropic (Anthropic PBC, USA): automatische Prüfung deiner Fotos und deines Studiennachweises (siehe Abschnitt 2). Übermittelt werden das jeweilige Foto oder der Nachweis und beim Profilfoto deine Angabe zum Geschlecht</li>
+      <li>Expo (650 Industries, Inc., USA): Zustellung der Push-Mitteilungen. Übermittelt werden der Push-Token deines Geräts und der Inhalt der Mitteilung, zum Beispiel der Name des Absenders und der Anfang einer Nachricht</li>
+      <li>Apple (Apple Inc., USA, und Apple Distribution International Ltd., Irland): Anmeldung mit Apple, Zustellung der Push-Mitteilungen auf dein Gerät, Abos und Käufe über den App Store sowie Karte und Adresssuche. Für die Anmeldung und die Abwicklung von Käufen ist Apple selbst verantwortlich, dafür gilt die Datenschutzrichtlinie von Apple</li>
+      <li>RevenueCat (RevenueCat, Inc., USA): Verwaltung deiner Abos und Käufe, verknüpft mit deiner Konto-ID</li>
+    </ul>
+    <p>Soweit diese Dienstleister in unserem Auftrag handeln, haben wir mit ihnen Verträge zur Auftragsverarbeitung nach Art. 28 DSGVO geschlossen. Übermittlungen in die USA stützen wir auf den Angemessenheitsbeschluss der EU-Kommission zum EU-US Data Privacy Framework, soweit der Empfänger danach zertifiziert ist, und im Übrigen auf die Standardvertragsklauseln der EU-Kommission (Art. 46 Abs. 2 lit. c DSGVO). Es findet kein Verkauf von Daten an Dritte statt. Keine Werbe-Tracker.</p>
     <h2>4. Wer deine Daten sieht</h2>
-    <p>Dein Profil (Name, Uni, Studiengang, Interessen, Bio, Avatar) ist für andere angemeldete Studierende sichtbar — das ist der Zweck der App. Deine E-Mail-Adresse ist niemals öffentlich. Nachrichten sehen nur du und dein Match.</p>
+    <p>Dein Profil (Name, Alter, Profilfotos, Hochschule, Studiengang, Semester, Abschluss, Interessen, wofür du offen bist, Bio) ist für andere angemeldete Studierende sichtbar. Das ist der Zweck der App. Andere sehen außerdem, ob du verifiziert bist, ob du gerade online bist und an deinen Beiträgen, ob du studate+ oder studate∞ hast. Technisch überträgt die App mit deinem Profil auch Angaben auf die Geräte anderer Nutzer, die dort nicht angezeigt werden, etwa wen du im Deck sehen möchtest, deinen Hochschul-Standort (studate∞), das Gültigkeitsdatum deines Studiennachweises, deine letzte Aktivität sowie ob und seit wann dein Profil pausiert ist. Profilfotos werden über Web-Adressen ausgeliefert, die auch ohne Anmeldung abrufbar sind. Deine E-Mail-Adresse ist niemals öffentlich. Nachrichten sehen nur du und dein Match.</p>
     <h2>5. Deine Rechte</h2>
-    <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO). Deinen Account inklusive aller Daten kannst du jederzeit direkt in der App löschen (Einstellungen → Account löschen). Beschwerden richtest du an die zuständige Datenschutzaufsichtsbehörde.</p>
+    <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch (Art. 15 bis 21 DSGVO). Deinen Account inklusive aller Daten kannst du jederzeit direkt in der App löschen (Einstellungen → Account löschen). Beschwerden richtest du an die zuständige Datenschutzaufsichtsbehörde.</p>
+    <div class="hinweis" id="widerspruch">
+      <p><b>Widerspruchsrecht nach Art. 21 DSGVO</b></p>
+      <p>Verarbeiten wir Daten auf Grundlage unseres berechtigten Interesses, kannst du dem jederzeit widersprechen. Das gilt insbesondere für die Nutzungsanalyse der Profilerstellung und den gespeicherten Pausier-Zeitpunkt. Eine formlose Mail an <a href="mailto:support@studate.eu">support@studate.eu</a> genügt. Wir löschen dann die Einträge der Nutzungsanalyse und den Pausier-Zeitpunkt.</p>
+    </div>
     <h2>6. Speicherdauer</h2>
-    <p>Wir speichern deine Daten, solange dein Account besteht. Nach der Löschung werden alle personenbezogenen Daten unverzüglich entfernt; gesetzliche Aufbewahrungspflichten bleiben unberührt.</p>
-    <p class="updated">Stand: Juli 2026</p>
+    <p>Wir speichern deine Daten, solange dein Account besteht. Nach der Löschung werden alle personenbezogenen Daten unverzüglich entfernt; gesetzliche Aufbewahrungspflichten bleiben unberührt. Einzige Ausnahme: Damit ein gelöschter Account nicht sofort neu angelegt wird, um Blockierungen, Meldungen oder Tageslimits zu umgehen, speichern wir 24 Stunden lang eine nicht rückrechenbare Prüfsumme (Hash) deiner Apple-Kennung, ohne Name und ohne E-Mail. Danach wird sie automatisch gelöscht. Rechtsgrundlage ist unser berechtigtes Interesse am Schutz der Community (Art. 6 Abs. 1 lit. f DSGVO). Die Einträge der Nutzungsanalyse löschen wir automatisch nach 90 Tagen, bei Löschung deines Accounts sofort.</p>
+    <p class="updated">Stand: September 2026</p>
   </main>
 
   <footer class="site wrap">
