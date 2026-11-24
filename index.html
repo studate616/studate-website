@@ -2,216 +2,247 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>STUDATE · Dein Campus. Deine Leute.</title>
-<meta name="description" content="STUDATE ist die Connect- und Meet-App für Studierende. Nur echte Studis, geprüft per Studiennachweis.">
-<style>
-  :root{
-    --paper:#FFFFFF; --ink:#1C0617; --ink-soft:#6E5D6B; --line:#EFE3EC;
-    --pink:#F0B1DE; --pink-soft:#F9E3F1; --marker:#FFDE59;
-    --lime-soft:#EFFBD2; --butter-soft:#FAEFCE; --sage-soft:#E8EEE4;
-    --band:#1C0617; --band-text:#F7ECF4;
-    color-scheme:light dark;
-  }
-  @media (prefers-color-scheme:dark){:root{
-    --paper:#140410; --ink:#F7ECF4; --ink-soft:#BFA9B9; --line:#2C1524;
-    --pink-soft:#301226; --lime-soft:#222B14; --butter-soft:#2E2712; --sage-soft:#1F2A1F;
-    --band:#0D020A; --band-text:#F7ECF4;
-  }}
-  :root[data-theme=light]{
-    --paper:#FFFFFF; --ink:#1C0617; --ink-soft:#6E5D6B; --line:#EFE3EC;
-    --pink-soft:#F9E3F1; --lime-soft:#EFFBD2; --butter-soft:#FAEFCE; --sage-soft:#E8EEE4;
-    --band:#1C0617; --band-text:#F7ECF4;
-  }
-  :root[data-theme=dark]{
-    --paper:#140410; --ink:#F7ECF4; --ink-soft:#BFA9B9; --line:#2C1524;
-    --pink-soft:#301226; --lime-soft:#222B14; --butter-soft:#2E2712; --sage-soft:#1F2A1F;
-    --band:#0D020A; --band-text:#F7ECF4;
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{margin:0;background:var(--paper);color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.65;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
-  a{color:inherit}
-  a:focus-visible,button:focus-visible{outline:3px solid var(--pink);outline-offset:2px;border-radius:4px}
-  header.nav{display:flex;align-items:center;justify-content:space-between;gap:16px 24px;
-    flex-wrap:wrap;padding:22px 22px 18px;border-bottom:1px solid var(--line)}
-  .wordmark{font-size:24px;font-weight:800;letter-spacing:-.5px;text-decoration:none;color:var(--ink)}
-  .wordmark em{font-style:normal;background:var(--pink);color:#1C0617;padding:0 4px;border-radius:5px}
-  header.nav .links{display:flex;gap:20px;flex-wrap:wrap;font-size:15px;font-weight:600}
-  header.nav .links a{color:var(--ink-soft);text-decoration:none}
-  header.nav .links a:hover,header.nav .links a[aria-current=page]{color:var(--ink)}
-  footer.site{margin-top:8px;border-top:1px solid var(--line);
-    padding:26px 22px 64px;color:var(--ink-soft);font-size:14px;
-    display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center}
-  footer.site a{text-decoration-color:var(--pink);text-underline-offset:3px}
-  footer.site .sep{opacity:.4}
-  .hero{display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:center;padding:64px 0 76px}
-  @media (max-width:840px){.hero{grid-template-columns:1fr;gap:36px;padding:40px 0 52px}}
-  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 16px}
-  h1{font-size:clamp(40px,6.6vw,66px);font-weight:800;letter-spacing:-.035em;line-height:1.03;margin:0 0 22px;text-wrap:balance}
-  .sweep{display:inline-block;background:var(--pink);color:#1C0617;padding:0 10px 2px;border-radius:9px;transform:rotate(-1.2deg)}
-  .lede{font-size:19px;color:var(--ink-soft);max-width:33em;margin:0 0 30px}
-  .lede b{color:var(--ink);font-weight:700}
-  .cta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-  .btn{display:inline-block;background:var(--band);color:var(--band-text);font-weight:700;font-size:17px;
-    padding:15px 26px;border-radius:999px;text-decoration:none}
-  .cta-note{font-size:14px;color:var(--ink-soft)}
-  .sticker{display:inline-block;margin-top:32px;background:var(--marker);color:#1C0617;font-weight:800;
-    font-size:15px;padding:10px 16px;border-radius:11px;transform:rotate(-2deg);box-shadow:0 6px 22px rgba(28,6,23,.16)}
-  .phone{justify-self:center;width:min(300px,80vw);border-radius:46px;border:9px solid #1C0617;
-    overflow:hidden;box-shadow:0 30px 70px rgba(28,6,23,.28);background:#1C0617}
-  .phone img{display:block;width:100%;height:auto}
-  .shot{justify-self:center;width:min(340px,86vw);border-radius:28px;overflow:hidden;
-    box-shadow:0 24px 60px rgba(28,6,23,.18)}
-  .shot img{display:block;width:100%;height:auto}
-  .gallery{display:grid;grid-auto-flow:column;grid-auto-columns:min(240px,64vw);gap:18px;
-    overflow-x:auto;padding:6px 4px 18px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-  .gallery .shot{width:100%;scroll-snap-align:start;border-radius:22px;box-shadow:0 14px 34px rgba(28,6,23,.14)}
-  .store-btn{display:inline-flex;align-items:center;gap:10px;background:#1C0617;color:#fff;
-    border-radius:999px;padding:14px 22px;font-weight:700;text-decoration:none}
-  .store-btn:hover{opacity:.9}
-  .store-btn svg{width:18px;height:22px;fill:#fff}
-  section.block{padding:0 0 86px}
-  .kicker{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 18px}
-  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  @media (max-width:840px){.features{grid-template-columns:1fr}}
-  .card{border-radius:22px;padding:26px 24px 28px}
-  .card h3{margin:0 0 8px;font-size:21px;font-weight:800;letter-spacing:-.02em;color:#1C0617}
-  .card p{margin:0;color:#4a3944;font-size:16px}
-  .card em{font-style:normal;background:#1C0617;color:#fff;padding:0 5px;border-radius:5px}
-  .card.rosa{background:#F9E3F1} .card.butter{background:#FAEFCE} .card.salbei{background:#E8EEE4}
-  .band{background:var(--band);color:var(--band-text);border-radius:28px;padding:52px clamp(24px,5vw,56px);margin-bottom:20px}
-  .band h2{font-size:clamp(27px,4vw,40px);font-weight:800;letter-spacing:-.03em;margin:0 0 12px}
-  .band h2 .m{display:inline-block;background:var(--marker);color:#1C0617;padding:0 8px 2px;border-radius:7px;transform:rotate(-1deg)}
-  .band>p{color:#CBB6C6;max-width:44em;margin:0 0 30px;font-size:17px}
-  .band ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:0;margin:0}
-  @media (max-width:840px){.band ul{grid-template-columns:1fr}}
-  .band li{border-top:2px solid rgba(240,177,222,.35);padding-top:14px;font-size:15.5px;color:#E9D9E4}
-  .band li b{display:block;color:#fff;font-size:16.5px;margin-bottom:5px}
-  @media (prefers-reduced-motion:no-preference){
-    .hero>*{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
-    .hero>*:nth-child(2){animation-delay:.1s}
-    @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  }
-
-  /* ---- Handy-Feinschliff (<=560px) ----
-     Getestet auf 375x812 (iPhone). Ziel: nichts klebt am Rand, Schrift
-     bleibt lesbar statt riesig, Tap-Flaechen gross genug (>=44px). */
-  @media (max-width:560px){
-    .wrap{padding:0 18px}
-    header.nav{padding:16px 18px 14px;gap:10px 16px}
-    .wordmark{font-size:21px}
-    header.nav .links{gap:14px;font-size:14.5px;width:100%}
-    header.nav .links a{padding:6px 0;display:inline-block}
-    footer.site{padding:22px 18px 44px;font-size:13.5px;gap:6px 14px}
-  }
-
-  @media (max-width:560px){
-    .hero{padding:26px 0 40px;gap:28px}
-    .eyebrow{font-size:11px;letter-spacing:.07em;margin:0 0 12px}
-    h1{font-size:clamp(30px,8.4vw,42px);line-height:1.08;margin:0 0 16px}
-    .sweep{padding:0 7px 1px;border-radius:7px}
-    .lede{font-size:16.5px;margin:0 0 24px}
-    .btn{display:block;text-align:center;font-size:16px;padding:15px 20px}
-    .cta-row{gap:12px}
-    .cta-note{font-size:13.5px}
-    .sticker{margin-top:24px;font-size:13.5px;padding:9px 13px}
-    .phone{width:min(250px,72vw);border-width:7px;border-radius:38px}
-    section.block{padding:0 0 52px}
-    .kicker{font-size:11px;margin:0 0 14px}
-    .features{gap:14px}
-    .card{padding:22px 20px 24px;border-radius:18px}
-    .card h3{font-size:19px}
-    .card p{font-size:15px}
-    .band{padding:34px 22px;border-radius:22px}
-    .band h2{font-size:clamp(24px,7vw,30px);margin:0 0 10px}
-    .band>p{font-size:15.5px;margin:0 0 24px}
-    .band ul{gap:18px}
-    .band li{font-size:15px}
-    .band li b{font-size:16px}
-  }
-</style>
+<meta name="description" content="STUDATE ist die App für Studis: Lernpartner aus deinem Fach finden, sehen, wo diese Woche was geht, und neue Leute an deiner Hochschule kennenlernen.">
+<meta name="theme-color" content="#1C0617">
+<meta name="apple-itunes-app" content="app-id=6790204175">
+<link rel="canonical" href="https://studate.eu/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://studate.eu/">
+<meta property="og:title" content="STUDATE · Dein Campus. Deine Leute.">
+<meta property="og:description" content="Die App für Studis: Lernpartner, Ausgehen, neue Leute. Direkt an deiner Hochschule.">
+<meta property="og:image" content="https://studate.eu/assets/og.jpg">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/Poppins_900Black.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<script>if(!/[?&]still/.test(location.search))document.documentElement.classList.add('js')</script>
 </head>
 <body>
-  <header class="nav wrap">
-    <a class="wordmark" href="index.html">stu<em>date</em></a>
-    <nav class="links">
-      <a href="index.html" aria-current="page">Start</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="agb.html">AGB</a>
-    </nav>
+  <header class="nav">
+    <div class="innen">
+      <a class="wordmark" href="index.html" aria-label="STUDATE Startseite">stu<em>date</em></a>
+      <nav class="links" aria-label="Seite">
+        <a class="nur-breit" href="#app">Die App</a>
+        <a class="nur-breit" href="#modi">Drei Modi</a>
+        <a class="nur-breit" href="#echt">Echte Studis</a>
+        <a class="nur-breit" href="#fragen">Fragen</a>
+        <a class="knopf klein" href="https://apps.apple.com/de/app/id6790204175" rel="noopener">
+          <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+          App laden
+        </a>
+      </nav>
+    </div>
   </header>
 
-  <main class="wrap">
+  <main>
     <section class="hero">
-      <div>
-        <p class="eyebrow">Nur für Studis · mit Studentenausweis-Check</p>
-        <h1>Studieren ist <span class="sweep">besser zu zweit.</span></h1>
-        <p class="lede">STUDATE verbindet dich mit Studis an deiner Hochschule: zum
-          zusammen Lernen, für Meetups am Campus oder einfach für neue Freundschaften.
-          <b>Du entscheidest, wofür du offen bist.</b></p>
-        <div class="cta-row">
-          <a class="store-btn" href="https://apps.apple.com/de/app/id6790204175" rel="noopener">
-            <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-            Im App Store laden
-          </a>
-          <span class="cta-note">Kostenlos laden · für iPhone</span>
+      <div class="korn"></div>
+      <div class="wrap innen">
+        <div>
+          <p class="auge">Die App für Studis</p>
+          <h1>Dein Campus. <span class="block">Deine Leute.</span></h1>
+          <p class="lede">STUDATE verbindet dich mit Studis an deiner Hochschule: zum zusammen Lernen,
+            zum Ausgehen oder einfach für neue Freundschaften. <b>Du entscheidest, wofür du offen bist.</b></p>
+          <div class="cta">
+            <a class="knopf" href="https://apps.apple.com/de/app/id6790204175" rel="noopener">
+              <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+              Im App Store laden
+            </a>
+            <small>Kostenlos laden · für iPhone</small>
+          </div>
         </div>
-        <span class="sticker">Kein Dating. Connecting.</span>
+        <div class="trio" aria-hidden="true">
+          <div class="tel links-tel"><img src="assets/app/meet.jpg" width="600" height="1304" alt=""></div>
+          <div class="tel rechts-tel"><img src="assets/app/mensa.jpg" width="600" height="1304" alt=""></div>
+          <div class="tel mitte"><img src="assets/app/stapel.jpg" width="600" height="1304" alt=""></div>
+          <div class="chip" style="left:-3%;top:58%;transform:rotate(-4deg)"><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><b>Studi-Haken</b><span>per Studiennachweis geprüft</span></div></div>
+          <div class="chip dunkel" style="right:-1%;top:17%;transform:rotate(3deg)"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.2"/><path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M16.5 7.5a6.4 6.4 0 0 1 0 9"/></svg></i><div><b>Ein Ping reicht</b><span>und ihr lernt euch kennen</span></div></div>
+        </div>
       </div>
-      <div class="shot">
-        <img src="assets/screens/01-hero.jpg" width="720" height="1560" alt="STUDATE: Dein Campus, deine Leute. Zwei Studis schauen gemeinsam auf die App.">
-      </div>
-    </section>
-
-    <section class="block" aria-label="Was STUDATE kann">
-      <p class="kicker">Drei Wege, deine Leute zu finden</p>
-      <div class="features">
-        <div class="card rosa"><h3>stu<em>learn</em></h3>
-          <p>Lernpartner aus deinem Studiengang: zusammen durch die Klausurenphase statt allein in der Bib.</p></div>
-        <div class="card butter"><h3>stu<em>meet</em></h3>
-          <p>Meetups auf der Karte: Lernsessions, Mensa-Runden, Sport und Partys direkt um deinen Campus.</p></div>
-        <div class="card salbei"><h3>stu<em>friends</em></h3>
-          <p>Neue Leute, echte Freundschaften. Im Campus-Feed siehst du, was an deiner Uni gerade läuft.</p></div>
-      </div>
-    </section>
-
-    <section class="block" aria-label="Ein Blick in die App">
-      <p class="kicker">Ein Blick in die App</p>
-      <div class="gallery">
-        <div class="shot"><img src="assets/screens/03-stulearn.jpg" loading="lazy" alt="Lernpartner aus deinem Fach: Swipe-Karte einer Studentin"></div>
-        <div class="shot"><img src="assets/screens/04-pings.jpg" loading="lazy" alt="Sieh, wer dich pingen will: die Ping-Inbox"></div>
-        <div class="shot"><img src="assets/screens/05-stumeet.jpg" loading="lazy" alt="Meetups direkt am Campus: Liste mit Lernsession und Kaffeerunde"></div>
-        <div class="shot"><img src="assets/screens/06-stufriends.jpg" loading="lazy" alt="Finde deine Crew: der Campus-Feed"></div>
-        <div class="shot"><img src="assets/screens/07-chats.jpg" loading="lazy" alt="Aus Ping wird Gespräch: die Chat-Liste"></div>
-        <div class="shot"><img src="assets/screens/02-modi.jpg" loading="lazy" alt="Ein Profil, drei Modi: stulearn, stumeet, stufriends"></div>
+      <div class="band-lauf" aria-hidden="true">
+        <div class="spur">
+          <span>stulearn</span><span>stumeet</span><span>stufriends</span><span>Von Studis, für Studis</span><span>Nur echte Studis</span>
+          <span>stulearn</span><span>stumeet</span><span>stufriends</span><span>Von Studis, für Studis</span><span>Nur echte Studis</span>
+          <span>stulearn</span><span>stumeet</span><span>stufriends</span><span>Von Studis, für Studis</span><span>Nur echte Studis</span>
+          <span>stulearn</span><span>stumeet</span><span>stufriends</span><span>Von Studis, für Studis</span><span>Nur echte Studis</span>
+        </div>
       </div>
     </section>
 
-    <section class="block">
-      <div class="band">
-        <h2>Nur <span class="m">echte Studis.</span></h2>
-        <p>Jedes Profil wird per Studiennachweis verifiziert: keine Bots, keine Fakes,
-          keine Ghost-Accounts. Und deine Daten behandeln wir so, wie wir es selbst erwarten würden.</p>
-        <ul>
-          <li><b>Ausweis-Check</b> Ohne gültigen Studiennachweis kommt niemand rein. Profilfotos werden automatisch geprüft.</li>
-          <li><b>Privatsphäre zuerst</b> Dein genauer Standort wird nie gespeichert. Entfernungen rechnen wir Uni-zu-Uni.</li>
-          <li><b>Daten in der EU</b> Profile, Chats und Fotos liegen auf Servern in Frankfurt (DSGVO). Keine Werbe-Tracker, keine Datenbroker.</li>
-        </ul>
+    <section class="teil wrap" id="app" aria-label="Die App">
+      <div class="kopfzeile zeig">
+        <p class="auge">Ein Blick in die App</p>
+        <h2>Alles, was dein <span class="block">Studileben</span> braucht.</h2>
+      </div>
+
+      <article class="panel pink zeig">
+        <div class="text">
+          <p class="auge">Stapel</p>
+          <h2>Lernpartner aus <span class="block">deinem Fach.</span></h2>
+          <p>Gleiche Klausuren, gleiche Leute. Du siehst Studis von deiner Hochschule und aus deinem Studiengang.
+            Wen du kennenlernen willst, bekommt einen Ping.</p>
+          <ul>
+            <li>Profile mit Hochschule, Studiengang und Semester</li>
+            <li>Studi-Haken für alle mit geprüftem Studiennachweis</li>
+            <li>Ein Ping statt endlosem Hin und Her</li>
+          </ul>
+        </div>
+        <div class="telwrap">
+          <div class="tel"><img src="assets/app/stapel.jpg" width="600" height="1304" loading="lazy" alt="Der Stapel in STUDATE: Profilkarte mit Hochschule, Studiengang und Semester"></div>
+          <div class="chip dunkel" style="right:-6px;bottom:15%;transform:rotate(3deg)"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.2"/><path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M16.5 7.5a6.4 6.4 0 0 1 0 9"/></svg></i><div><b>Ein Ping reicht</b><span>kein Druck, kein Ghosting-Spiel</span></div></div>
+        </div>
+      </article>
+
+      <article class="panel dunkel dreh zeig">
+        <div class="text">
+          <p class="auge">Meet</p>
+          <h2>Wo diese Woche <span class="block">was geht.</span></h2>
+          <p>Bars, Kneipen, Clubs und Biergärten rund um deine Uni auf einer Karte. Daumen hoch oder runter,
+            und du siehst, wo diese Woche am meisten los ist.</p>
+          <ul>
+            <li>Rangliste der Woche für deine Stadt</li>
+            <li>Abstimmen mit einem Tipp</li>
+            <li>Jede Woche geht es von vorn los</li>
+          </ul>
+        </div>
+        <div class="telwrap">
+          <div class="tel"><img src="assets/app/meet.jpg" width="600" height="1304" loading="lazy" alt="Meet in STUDATE: Karte mit Bars und Clubs und der Rangliste der Woche"></div>
+          <div class="chip" style="left:-6px;top:30%;transform:rotate(-4deg)"><i><svg viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></i><div><b>Platz 1 diese Woche</b><span>da ist der Hype</span></div></div>
+        </div>
+      </article>
+
+      <article class="panel rosa zeig">
+        <div class="text">
+          <p class="auge">Mensa</p>
+          <h2>Wer will dich <span class="block">kennenlernen?</span></h2>
+          <p>In der Mensa landet jeden Tag frisch auf deinem Tablett, wem du gefällst.
+            Ping zurück und ihr seid connected.</p>
+          <ul>
+            <li>Jeden Tag ein neues Tablett</li>
+            <li>Du entscheidest, wen du aufdeckst</li>
+          </ul>
+        </div>
+        <div class="telwrap">
+          <div class="tel"><img src="assets/app/mensa.jpg" width="600" height="1304" loading="lazy" alt="Die Mensa in STUDATE: Heute auf deinem Tablett, drei Leute wollen dich kennenlernen"></div>
+          <div class="chip dunkel gelb" style="left:-10px;top:52%;transform:rotate(-3deg)"><i><svg viewBox="0 0 24 24"><rect x="6" y="11" width="12" height="9" rx="2"/><path d="M9 11V8a3 3 0 0 1 6 0v3"/></svg></i><div><b>3 Leute warten</b><span>tipp zum Aufdecken</span></div></div>
+          <div class="chip pink" style="right:-10px;bottom:13%;transform:rotate(3deg)"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.2"/><path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M16.5 7.5a6.4 6.4 0 0 1 0 9"/></svg></i><div><b>Ping zurück</b><span>und ihr seid connected</span></div></div>
+        </div>
+      </article>
+
+      <article class="panel dunkel dreh zeig">
+        <div class="text">
+          <p class="auge">Chats</p>
+          <h2>Ein Ping. <span class="block">Connected!</span></h2>
+          <p>Wenn ihr euch beide kennenlernen wollt, schreibt ihr einfach los. Für die Lerngruppe,
+            den Kaffee nach der Vorlesung oder den Abend in der Stadt.</p>
+        </div>
+        <div class="telwrap">
+          <div class="tel"><img src="assets/app/connected.jpg" width="600" height="1304" loading="lazy" alt="Connected in STUDATE: Zwei Studis wollen sich kennenlernen und können schreiben"></div>
+          <div class="blase a" style="left:-18px;top:22%;transform:rotate(-3deg)">Sehr gern Kaffee! Diese Woche irgendwann?</div>
+          <div class="blase b" style="right:-18px;top:36%;transform:rotate(2deg)">Donnerstag nach Statistik?</div>
+        </div>
+      </article>
+    </section>
+
+    <section class="teil wrap" id="modi" aria-label="Drei Modi">
+      <div class="kopfzeile zeig">
+        <p class="auge">Du entscheidest, wofür du offen bist</p>
+        <h2>Ein Profil. <span class="block">Drei Modi.</span></h2>
+      </div>
+      <div class="modi">
+        <div class="modus eins zeig"><h3>stu<em>learn</em></h3>
+          <p>Lernpartner aus deinem Studiengang. Zusammen durch die Klausurenphase statt allein in der Bib.</p></div>
+        <div class="modus zwei zeig"><h3>stu<em>meet</em></h3>
+          <p>Kaffee, Mensa, Feierabend. Sieh auf der Karte, wo diese Woche was los ist.</p></div>
+        <div class="modus drei zeig"><h3>stu<em>friends</em></h3>
+          <p>Neu in der Stadt oder einfach Lust auf neue Leute. Finde deine Crew am Campus.</p></div>
+      </div>
+    </section>
+
+    <section class="teil wrap" id="echt" aria-label="Echte Studis">
+      <article class="panel pink zeig" style="margin:0">
+        <div class="text">
+          <p class="auge">Sicherheit</p>
+          <h2>Nur <span class="block">echte</span> Studis.</h2>
+          <p>Keine Fakes, keine Bots. Und deine Daten behandeln wir so, wie wir es selbst erwarten würden.</p>
+          <div class="punkte">
+            <div class="punkt"><b>Studi-Haken</b><span>Mit deinem Studiennachweis bekommt dein Profil den Haken. So sieht jeder, dass du wirklich studierst.</span></div>
+            <div class="punkt"><b>Fotos geprüft</b><span>Jedes Profilfoto wird automatisch geprüft. Profile lassen sich melden und blockieren.</span></div>
+            <div class="punkt"><b>Privatsphäre zuerst</b><span>Dein genauer Standort wird nie gespeichert. Entfernungen rechnen wir von Uni zu Uni.</span></div>
+            <div class="punkt"><b>Daten in der EU</b><span>Profile, Chats und Fotos liegen auf Servern in Frankfurt. Keine Werbe-Tracker, keine Datenbroker.</span></div>
+          </div>
+        </div>
+        <div class="telwrap nur-breit">
+          <div class="tel"><img src="assets/app/karte.jpg" width="600" height="1304" loading="lazy" alt="Die Studi-Karte in STUDATE mit Name, Hochschule und Studiengang"></div>
+          <div class="chip" style="right:-8px;top:13%;transform:rotate(3deg)"><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><b>Fotos geprüft</b><span>keine Fakes, keine Bots</span></div></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="teil wrap" aria-label="So geht es los">
+      <div class="kopfzeile zeig">
+        <p class="auge">So geht es los</p>
+        <h2>In zwei Minuten <span class="block">drin.</span></h2>
+      </div>
+      <div class="schritte">
+        <div class="schritt zeig"><h3>Studi-Karte anlegen</h3><p>Name, Hochschule, Studiengang und zwei Fotos. Mehr braucht es nicht.</p></div>
+        <div class="schritt zeig"><h3>Pingen</h3><p>Zeig mit einem Ping, wen du kennenlernen willst. Ganz ohne ersten Spruch.</p></div>
+        <div class="schritt zeig"><h3>Connected</h3><p>Wollt ihr beide, seid ihr connected und könnt direkt schreiben.</p></div>
+      </div>
+    </section>
+
+    <section class="teil wrap" id="fragen" aria-label="Häufige Fragen">
+      <div class="kopfzeile zeig">
+        <p class="auge">Kurz gefragt</p>
+        <h2>Noch <span class="block">Fragen?</span></h2>
+      </div>
+      <div class="fragen zeig">
+        <details><summary>Was kostet STUDATE?</summary>
+          <p>Laden und loslegen ist kostenlos. Wer mehr will, findet in der App das Abo studate∞.</p></details>
+        <details><summary>Brauche ich einen Studiennachweis?</summary>
+          <p>Zum Start nicht. Mit deinem Studiennachweis bekommt dein Profil aber den Studi-Haken, und andere sehen, dass du wirklich studierst.</p></details>
+        <details><summary>Für welche Geräte gibt es die App?</summary>
+          <p>STUDATE gibt es aktuell für das iPhone im App Store.</p></details>
+        <details><summary>Wer steckt dahinter?</summary>
+          <p>STUDATE ist von Studis für Studis gebaut. Fragen, Ideen oder Probleme? Schreib uns an
+            <a href="mailto:studate616@gmail.com">studate616@gmail.com</a>.</p></details>
+      </div>
+    </section>
+
+    <section class="teil wrap" aria-label="App laden">
+      <div class="schluss zeig">
+        <div class="korn"></div>
+        <h2>Deine Leute <span class="block">warten schon.</span></h2>
+        <p>Lad dir STUDATE und finde heraus, wer an deiner Hochschule unterwegs ist.</p>
+        <a class="knopf dunkel" href="https://apps.apple.com/de/app/id6790204175" rel="noopener">
+          <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+          Im App Store laden
+        </a>
+        <small>Kostenlos laden · für iPhone</small>
       </div>
     </section>
   </main>
 
   <footer class="site wrap">
+    <a class="wordmark" href="index.html" aria-label="STUDATE Startseite">stu<em>date</em></a>
     <span>© 2026 Studate</span>
     <span class="sep">·</span><a href="impressum.html">Impressum</a>
     <span class="sep">·</span><a href="datenschutz.html">Datenschutz</a>
     <span class="sep">·</span><a href="agb.html">AGB</a>
     <span class="sep">·</span><a href="mailto:studate616@gmail.com">studate616@gmail.com</a>
   </footer>
+
+  <script>
+    (function(){
+      var teile=document.querySelectorAll('.zeig');
+      if(!('IntersectionObserver' in window)){teile.forEach(function(e){e.classList.add('da')});return}
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('da');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+      teile.forEach(function(e){io.observe(e)});
+    })();
+  </script>
 </body>
 </html>
